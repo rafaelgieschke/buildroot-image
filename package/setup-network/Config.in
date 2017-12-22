@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SETUP_NETWORK
+	bool "setup_network"
+	help
+	  Set IP at start-up.

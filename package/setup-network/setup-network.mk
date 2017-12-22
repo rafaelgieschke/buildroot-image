@@ -1,0 +1,8 @@
+SETUP_NETWORK_VERSION=0.8
+SETUP_NETWORK_SOURCE=
+
+define SETUP_NETWORK_INSTALL_INIT_SYSV
+	$(INSTALL) -m 0755 -D $(SETUP_NETWORK_PKGDIR)/S90setup-network $(TARGET_DIR)/etc/init.d/
+endef
+
+$(eval $(generic-package))
