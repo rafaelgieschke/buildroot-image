@@ -1,0 +1,4 @@
+config BR2_LINUX_KERNEL_EXT_UNCOMPRESSED
+	bool "kernel_uncompressed"
+	help
+	  Treat BR2_LINUX_KERNEL_XZ as uncompressed kernel.

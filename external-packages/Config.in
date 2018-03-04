@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_WEBSERVER_CONF_PATH/package/setup-network/Config.in"
+source "$BR2_EXTERNAL_WEBSERVER_CONF_PATH/package/kernel-uncompressed/Config.in"

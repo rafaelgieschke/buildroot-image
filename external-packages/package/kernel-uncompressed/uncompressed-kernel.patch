@@ -1,0 +1,35 @@
+From: Rafael Gieschke <rafael.gieschke@rz.uni-freiburg.de>
+Date: Sat, 3 Mar 2018 00:02:16 +0000
+Subject: [PATCH] HACK: Treat CONFIG_KERNEL_XZ as uncompressed kernel
+
+---
+ lib/decompress_unxz.c | 2 ++
+ scripts/xz_wrap.sh    | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/lib/decompress_unxz.c b/lib/decompress_unxz.c
+index 25d59a9..1e5766f 100644
+--- a/lib/decompress_unxz.c
++++ b/lib/decompress_unxz.c
+@@ -402,6 +402,8 @@ STATIC int INIT __decompress(unsigned char *buf, long len,
+ 			   long *pos,
+ 			   void (*error)(char *x))
+ {
++	memcpy(out_buf, buf, len);
++	return 0;
+ 	return unxz(buf, len, fill, flush, out_buf, pos, error);
+ }
+ #endif
+diff --git a/scripts/xz_wrap.sh b/scripts/xz_wrap.sh
+index 7a2d372..5bc5310 100755
+--- a/scripts/xz_wrap.sh
++++ b/scripts/xz_wrap.sh
+@@ -20,4 +20,5 @@ case $SRCARCH in
+ 	sparc)          BCJ=--sparc ;;
+ esac
+ 
++exec cat
+ exec xz --check=crc32 $BCJ --lzma2=$LZMA2OPTS,dict=32MiB
+-- 
+2.7.4
+
