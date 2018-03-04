@@ -7,8 +7,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get -y install \
   bc
 
 WORKDIR /root
-COPY buildroot .
-COPY external-packages .
+COPY buildroot buildroot
+COPY external-packages external-packages
 
 WORKDIR /root/buildroot
 COPY .config .
