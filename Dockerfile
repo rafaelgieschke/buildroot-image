@@ -12,6 +12,6 @@ COPY external-packages external-packages
 
 WORKDIR /root/buildroot
 COPY .config .
-RUN make -j $(nproc)
+RUN make BR2_EXTERNAL="/root/external-packages" BR2_JLEVEL="$(nproc)"
 RUN cp output/images/rootfs.iso9660 /image.iso
 CMD cat /image.iso
